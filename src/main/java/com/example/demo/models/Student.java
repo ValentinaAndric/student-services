@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "student")
-
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +23,7 @@ public class Student {
     @Column(name = "numberofindex", nullable = false, length = 10)
     private String numberofindex;
 
-    @JsonIgnore
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "studyprogram", nullable = false)
     private StudyProgram studyprogram;

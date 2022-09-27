@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import com.example.demo.repositories.StudyProgramRepository;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class StudyProgramService {
 
@@ -19,5 +21,11 @@ public class StudyProgramService {
         return studyProgramRepository.findAll();
     }
 
+    public Optional<StudyProgram> getStudyProgramById(Integer id){
+       return studyProgramRepository.findById(id);
+    }
 
+    public void postStudyProgam(StudyProgram studyProgram){
+        studyProgramRepository.save(studyProgram);
+    }
 }
