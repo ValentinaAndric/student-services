@@ -16,14 +16,21 @@ public class StudentService {
         this.studentRepository = studentRepository;
     }
 
+    //Get all student
     public List<Student> getAllStudent() {
         return studentRepository.findAll();
     }
+    //Get student by id
     public Optional<Student> getStudentById(Integer id) {
         return studentRepository.findById(id);
     }
+    //Post student
     public void postStudent(Student student){
         studentRepository.save(student);
+    }
+
+    public void deleteStudent(Integer id){
+         studentRepository.deleteById(id);
     }
 }
 

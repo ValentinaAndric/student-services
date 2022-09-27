@@ -33,4 +33,8 @@ public class StudentCtrl {
     public void postStudent(@RequestBody Student student){
         studentService.postStudent(student);
     }
+    @DeleteMapping("/{id}")
+    public void deleteStudent(@PathVariable Integer id){
+        studentService.deleteStudent(id);
+    }
 }

@@ -29,6 +29,9 @@ public class SubjectCtrl {
     @PostMapping
     public void postSubject(@RequestBody Subject subject){
         subjectService.postSubject(subject);
-
+    }
+    @DeleteMapping("/{id}")
+    public void deleteSubject(@PathVariable Integer id){
+        subjectService.deleteSubject(id);
     }
 }

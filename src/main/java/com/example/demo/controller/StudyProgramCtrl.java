@@ -32,4 +32,9 @@ public class StudyProgramCtrl {
     public void postStudyProgram(@RequestBody StudyProgram studyProgram){
         studyProgramService.postStudyProgam(studyProgram);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteStudyProgram (@PathVariable Integer id){
+        studyProgramService.deleteStudyProgram(id);
+    }
 }
