@@ -34,4 +34,9 @@ public class SubjectCtrl {
     public void deleteSubject(@PathVariable Integer id){
         subjectService.deleteSubject(id);
     }
+    @PutMapping("/{id}")
+    public void updateSubject(@PathVariable("id")Integer id, @RequestParam(required = false) String name,
+                              @RequestParam(required = false) String description, @RequestParam(required = false)Integer espb){
+        subjectService.updateSubject(id,name,description,espb);
+    }
 }

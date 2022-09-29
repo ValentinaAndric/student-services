@@ -38,4 +38,18 @@ public class SubjectService {
     public void deleteSubject (Integer id){
         subjectRepository.deleteById(id);
     }
+
+    public void updateSubject (Integer id, String name, String description, Integer espb){
+        Subject subject = subjectRepository.findById(id).orElseThrow(()-> new IllegalStateException("Subject with given id does not exists"));
+        if(name!= null){
+            subject.setName(name);
+        }
+        if(description!= null){
+            subject.setDescription(description);
+        }
+        if(espb!= null){
+            subject.setEspb(espb);
+        }
+        subjectRepository.save(subject);
+    }
 }

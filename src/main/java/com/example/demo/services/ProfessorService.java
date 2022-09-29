@@ -36,18 +36,18 @@ public class ProfessorService {
     }
 
     @Transactional
-    public void updateProfessor (Integer id, String name, String surname, String education){
-        Professor professor = professorRepository.findById(id).orElseThrow(()-> new IllegalStateException("Student with given id does not exists!"));
-        if(name!= null){
-            professor.setName(name);
+    public void updateProfessor (Integer id, Professor professor){
+        Professor prf = professorRepository.findById(id).orElseThrow(()-> new IllegalStateException("Student with given id does not exists!"));
+        if(professor.getName() != null){
+            prf.setName(professor.getName());
         }
-        if(surname!= null){
-            professor.setSurname(surname);
+        if(professor.getSurname() != null){
+            prf.setSurname(professor.getSurname());
         }
-        if(education != null){
-            professor.setEducation(education);
+        if(professor.getEducation() != null){
+            prf.setEducation(professor.getEducation());
         }
-        professorRepository.save(professor);
+        professorRepository.save(prf);
     }
 }
 
