@@ -6,6 +6,7 @@ import com.example.demo.repositories.ProfessorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,13 +35,19 @@ public class ProfessorService {
         professorRepository.deleteById(id);
     }
 
+    @Transactional
     public void updateProfessor (Integer id, String name, String surname, String education){
-        Optional<Professor> oldProfessor = professorRepository.findById(id);
-        oldProfessor.ifPresent(professor -> {professor.setName(name);
-        professor.setSurname(surname); professor.setEducation(education);
-        professorRepository.save(professor);});
-
-
+        Professor professor = professorRepository.findById(id).orElseThrow(()-> new IllegalStateException("Student with given id does not exists!"));
+        if(name!= null){
+            professor.setName(name);
+        }
+        if(surname!= null){
+            professor.setSurname(surname);
+        }
+        if(education != null){
+            professor.setEducation(education);
+        }
+        professorRepository.save(professor);
     }
 }
 

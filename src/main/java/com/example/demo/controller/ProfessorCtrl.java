@@ -38,11 +38,10 @@ public class ProfessorCtrl {
     }
 
     @PutMapping("/{id}")
-    public void updateProfessor(@PathVariable Integer id, @RequestParam String name,
-                                @RequestParam String surname, @RequestParam String education){
+    public void updateProfessor(@PathVariable("id") Integer id, @RequestParam(required = false) String name,
+                                @RequestParam(required = false) String surname, @RequestParam(required = false) String education){
 
         professorService.updateProfessor(id,name,surname,education);
 
     }
-
 }

@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.models.StudyProgram;
+import org.aspectj.lang.annotation.DeclareWarning;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.example.demo.services.StudyProgramService;
@@ -37,4 +38,11 @@ public class StudyProgramCtrl {
     public void deleteStudyProgram (@PathVariable Integer id){
         studyProgramService.deleteStudyProgram(id);
     }
+
+    @PutMapping("/{id}")
+    public void updateStudyProgram(@PathVariable("id") Integer id, @RequestParam(required = false) String name,
+                                   @RequestParam(required = false) Integer duration, @RequestParam(required = false) String desctiption){
+        studyProgramService.updataStudyProgram(id,name,duration,desctiption);
+    }
+
 }
