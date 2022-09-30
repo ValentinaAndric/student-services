@@ -40,9 +40,8 @@ public class StudyProgramCtrl {
     }
 
     @PutMapping("/{id}")
-    public void updateStudyProgram(@PathVariable("id") Integer id, @RequestParam(required = false) String name,
-                                   @RequestParam(required = false) Integer duration, @RequestParam(required = false) String desctiption){
-        studyProgramService.updataStudyProgram(id,name,duration,desctiption);
+    public void updateStudyProgram(@PathVariable("id") Integer id, @RequestBody StudyProgram studyProgram){
+        studyProgramService.updataStudyProgram(id,studyProgram);
     }
 
 }

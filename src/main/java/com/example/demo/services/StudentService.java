@@ -33,22 +33,23 @@ public class StudentService {
     public void deleteStudent(Integer id){
          studentRepository.deleteById(id);
     }
-    public void updateStudent(Integer id, String name, String surname, String numberOfIndex, StudyProgram studyProgram){
-        Student student = studentRepository.findById(id).orElseThrow(()-> new IllegalStateException("Student with given id does not exists"));
-        if(name!= null){
-            student.setName(name);
+    public void updateStudent(Integer id, Student newStudent){
+        Student oldStudent = studentRepository.findById(id).orElseThrow(()-> new IllegalStateException("Student with given id does not exists"));
+        if (newStudent.getName()!=null){
+            oldStudent.setName(newStudent.getName());
         }
-        if(surname != null){
-            student.setSurname(surname);
+        if(newStudent.getSurname()!=null){
+            oldStudent.setSurname(newStudent.getSurname());
         }
-        if(numberOfIndex != null){
-            student.setNumberofindex(numberOfIndex);
+        if(newStudent.getNumberofindex()!= null){
+            oldStudent.setNumberofindex(newStudent.getNumberofindex());
         }
-        if(studyProgram != null){
-            student.setStudyprogram(studyProgram);
+        if(newStudent.getStudyprogram() != null){
+            oldStudent.setStudyprogram(newStudent.getStudyprogram());
         }
+        studentRepository.save(oldStudent);
 
-        studentRepository.save(student);
+
     }
 }
 

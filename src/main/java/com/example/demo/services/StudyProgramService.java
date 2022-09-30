@@ -36,17 +36,19 @@ public class StudyProgramService {
         studyProgramRepository.deleteById(id);
     }
     //Update study program
-    public void updataStudyProgram(Integer id, String name, Integer duration, String description){
-       StudyProgram studyProgram = studyProgramRepository.findById(id).orElseThrow(()-> new IllegalStateException("Study program with given id does not exist"));
-       if(name!= null){
-           studyProgram.setName(name);
+    public void updataStudyProgram(Integer id, StudyProgram newStudyProgram){
+       StudyProgram oldStudyProgram = studyProgramRepository.findById(id).orElseThrow(()-> new IllegalStateException("Study program with given id does not exist"));
+       if(newStudyProgram.getName() != null){
+           oldStudyProgram.setName(newStudyProgram.getName());
        }
-       if(duration != null){
-           studyProgram.setDuration(duration);
+       if(newStudyProgram.getDuration()!= null){
+           oldStudyProgram.setDuration(newStudyProgram.getDuration());
        }
-       if(description != null){
-           studyProgram.setDescription(description);
+       if(newStudyProgram.getDescription()!= null){
+           oldStudyProgram.setDescription(newStudyProgram.getDescription());
        }
-       studyProgramRepository.save(studyProgram);
+
+       studyProgramRepository.save(oldStudyProgram);
+
     }
 }

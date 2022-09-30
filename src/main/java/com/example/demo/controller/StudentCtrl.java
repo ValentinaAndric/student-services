@@ -39,9 +39,7 @@ public class StudentCtrl {
     }
 
     @PutMapping("/{id}")
-    public void updateStudent (@PathVariable("id") Integer id, @RequestParam(required = false) String name,
-                               @RequestParam(required = false)String surname, @RequestParam(required = false) String numberOfIndex,
-                               @RequestParam(required = false)StudyProgram studyProgram){
-        studentService.updateStudent(id, name,surname, numberOfIndex, studyProgram);
+    public void updateStudent (@PathVariable("id") Integer id, @RequestBody Student student){
+        studentService.updateStudent(id, student);
     }
 }
