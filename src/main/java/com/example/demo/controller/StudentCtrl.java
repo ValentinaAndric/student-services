@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.models.Student;
-import com.example.demo.models.StudyProgram;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.example.demo.services.StudentService;
@@ -41,5 +40,9 @@ public class StudentCtrl {
     @PutMapping("/{id}")
     public void updateStudent (@PathVariable("id") Integer id, @RequestBody Student student){
         studentService.updateStudent(id, student);
+    }
+    @GetMapping("subj/{id}")
+    public List<Student> getAllStudentBySubject(@PathVariable("id") Integer subject){
+       return studentService.getAllStudentBySubject(subject);
     }
 }

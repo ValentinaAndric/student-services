@@ -33,7 +33,7 @@ public class ProfessorService {
     public void deleteProfessor (Integer id){
         professorRepository.deleteById(id);
     }
-
+    //Update professor
     public void updateProfessor (Integer id, Professor newProfessor){
         Professor oldProfessor = professorRepository.findById(id).orElseThrow(()-> new IllegalStateException("Student with given id does not exists!"));
         if(newProfessor.getName() != null){

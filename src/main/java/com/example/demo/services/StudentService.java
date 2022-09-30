@@ -48,8 +48,9 @@ public class StudentService {
             oldStudent.setStudyprogram(newStudent.getStudyprogram());
         }
         studentRepository.save(oldStudent);
-
-
+    }
+    public List<Student> getAllStudentBySubject(Integer subject){
+        return studentRepository.getAllStudentBySubject(subject);
     }
 }
 
